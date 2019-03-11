@@ -1,6 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { shallow } from 'enzyme';
+import '../jest.config.js'
+import { mount } from 'enzyme';
 import { expect } from 'chai';
 import { Sparklines } from '../src/Sparklines';
 
@@ -10,12 +9,12 @@ describe('Sparklines', () => {
     });
 
     it('renders nothing when passed no data', () => {
-        const wrapper = shallow(<Sparklines />);
+        const wrapper = mount(<Sparklines />);
         expect(wrapper.find('svg')).to.have.length(0);
     });
 
     it('is rendered as svg', () => {
-        const wrapper = shallow(<Sparklines data={[1]} />);
+        const wrapper = mount(<Sparklines data={[1]} />);
         expect(wrapper.find('svg')).to.have.length(1);
     });
 });

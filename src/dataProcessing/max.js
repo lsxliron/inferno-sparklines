@@ -1,2 +1,2 @@
 export default data =>
-    Math.max.apply(Math, data);
+    Math.max.apply(null, data);

@@ -1,21 +1,9 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+const SparklinesLine = props => {
 
-export default class SparklinesLine extends React.Component {
-  static propTypes = {
-    color: PropTypes.string,
-    style: PropTypes.object,
-  };
+    const { data, points, height, margin, color, style, onMouseMove } = props
 
-  static defaultProps = {
-    style: {},
-    onMouseMove: () => {},
-  };
-
-  render() {
-    const { data, points, width, height, margin, color, style, onMouseMove } = this.props;
-
-    const linePoints = points.map(p => [p.x, p.y]).reduce((a, b) => a.concat(b));
+    const linePoints = points.map(p => [p.x, p.y]).reduce((a, b) => a.concat(b))
+    
 
     const closePolyPoints = [
       points[points.length - 1].x,
@@ -24,26 +12,27 @@ export default class SparklinesLine extends React.Component {
       height - margin,
       margin,
       points[0].y,
-    ];
+    ]
 
-    const fillPoints = linePoints.concat(closePolyPoints);
+    const fillPoints = linePoints.concat(closePolyPoints)
 
     const lineStyle = {
       stroke: color || style.stroke || 'slategray',
-      strokeWidth: style.strokeWidth || '1',
-      strokeLinejoin: style.strokeLinejoin || 'round',
-      strokeLinecap: style.strokeLinecap || 'round',
+      'stroke-width': style.strokeWidth || '1',
+      'stroke-linejoin': style.strokeLinejoin || 'round',
+      'stroke-linecap': style.strokeLinecap || 'round',
       fill: 'none',
-    };
+    }
     const fillStyle = {
       stroke: style.stroke || 'none',
-      strokeWidth: '0',
-      fillOpacity: style.fillOpacity || '.1',
+      'stroke-width': '0',
+      'fill-opacity': style.fillOpacity || '.1',
       fill: style.fill || color || 'slategray',
-      pointerEvents: 'auto',
-    };
+      'pointer-events': 'auto',
+    }
 
     const tooltips = points.map((p, i) => {
+
       return (
         <circle
           key={i}
@@ -51,11 +40,13 @@ export default class SparklinesLine extends React.Component {
           cy={p.y}
           r={2}
           style={fillStyle}
+          // @ts-ignore
           onMouseEnter={e => onMouseMove('enter', data[i], p)}
+          // @ts-ignore
           onClick={e => onMouseMove('click', data[i], p)}
         />
-      );
-    });
+      )
+    })
 
     return (
       <g>
@@ -63,6 +54,14 @@ export default class SparklinesLine extends React.Component {
         <polyline points={fillPoints.join(' ')} style={fillStyle} />
         <polyline points={linePoints.join(' ')} style={lineStyle} />
       </g>
-    );
+    )
   }
+
+
+
+SparklinesLine.defaultProps = {
+  style: {},
+  onMouseMove: () => {},
 }
+
+export default SparklinesLine

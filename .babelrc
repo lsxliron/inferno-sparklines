@@ -1,11 +1,12 @@
 {
-    "presets": [
-      "react",
-      "es2015",
-      "stage-1"
-    ],
-    "plugins": [
-      "transform-object-assign"
-    ],
-    "sourceMaps": true,
+  "presets": ["@babel/preset-env", "inferno-app"],
+  "plugins": [
+    // ["module-resolver", {
+    //   "root": ["."],
+    //   "alias": {
+    //       "react": "inferno-compat",
+    //   }
+    // }],
+    ["@babel/plugin-proposal-class-properties", { "loose": true }], 
+    "@babel/plugin-proposal-export-default-from"]
 }

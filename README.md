@@ -1,10 +1,12 @@
-# Beautiful and expressive sparklines component for React
+# Beautiful and expressive sparklines component for Inferno
 
 [![Build Status](https://travis-ci.org/borisyankov/react-sparklines.svg?branch=master)](https://travis-ci.org/borisyankov/react-sparklines)
 
 Live demos and docs: [borisyankov.github.io/react-sparklines/](http://borisyankov.github.io/react-sparklines/)
 
 ![](http://borisyankov.github.io/react-sparklines/img/dynamic.gif)
+
+This is a modified fork of https://github.com/borisyankov/react-sparklines
 
 ## Install
 

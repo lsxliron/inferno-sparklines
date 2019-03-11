@@ -1,2 +1,2 @@
 export default data =>
-    Math.min.apply(Math, data);
+    Math.min.apply(null, data);
